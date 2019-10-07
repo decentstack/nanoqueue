@@ -26,7 +26,7 @@ const queue = new NanoQueue(15, {
 
   // Will be invoked every time queue.remaining reaches 0
   oncomplete: () => {
-    console.log('All done')
+    console.log('All done, current sum:', sum)
   }
 
 })
@@ -36,16 +36,15 @@ for (let i = 0; i < 100; i++) {
 }
 ```
 
-## API
 
-### class NanoQueue
+## class NanoQueue
 
 **Properties**
 
 - _ro_ `{Number} remaining` Amount of items that have not yet finished processing
 - _ro_ `{Number} progress` Value between 0 and 1
 
-#### Constructor
+### Constructor
 
 `new NanoQueue(nSlots, handlers)`
 
@@ -62,17 +61,21 @@ Creates a new NanoQueue instance with specified amount of work-slots.
 The `process` handler is _required_ to be implemented and once invoked it must in turn
 invoke the `done` callback to let the queue continue.
 
-#### Function: push
+### Function: push
 `queue.push(item)`
 
 **Description**
 
 Enqueues `item`for processing
 
-#### Function: reset
+### Function: reset
 
 `queue.reset()`
 
 **Description**
 
 Resets processed/enqueued counters back to zero
+
+## License
+
+This software is released under GNU LGPL 3.0 or later
